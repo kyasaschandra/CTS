@@ -9,11 +9,13 @@ import com.cts.vo.Package;
 public class PackageDAOImple implements PackageDAO
 {
 
+	// Method for inserting package details into database
 	@Override
 	public int insertion(Package p) {
 		int result=0,flag=0;
 		try
 			{
+			// Creating database connection adn executing the query
 			PreparedStatement pst=Db.getDb().prepareStatement(
 					"insert into package(consignmentId,acceptDate,packageWeight,cost,senderAddress,receiverAddress,distance,employeeId,customerId,type,currentLocation,packageStatus,currentDate) values('"
 			+p.getCosignmentId()+"','"+p.getAcceptDate()+"','"+p.getPackageWeight()+"','"+p.getCost()+"','"+p.getSenderAddress()+"','"+p.getReceiverAddress()+"','"
@@ -63,10 +65,12 @@ public class PackageDAOImple implements PackageDAO
 		return al;
 	}*/
 
+	// Method for updating package details in database
 	public int updation(Package p) {
 		int result=0;
 		try
 			{
+			// Creating database connection and executing the query
 			PreparedStatement pst=Db.getDb().prepareStatement("update package set employeeId='"+p.getEmployeeId()+"' , currentLocation='"
 			+p.getCurrentLocation()+"', packageStatus='"+p.getPackageStatus()+"', currentDate='"+p.getCurrentDate()+"', type='"+p.getType()
 			+"' where consignmentId='"+p.getCosignmentId()+"';");
@@ -79,11 +83,13 @@ public class PackageDAOImple implements PackageDAO
 			return result;
 	}
 	
+	// Method for saving the quotation details in database
 	public int saveQuotation(Package p) {
 		int result=0;
 		
 		try
 		{
+			// Creating database connection nad executing the query statement
 		PreparedStatement pst=Db.getDb().prepareStatement(
 				"insert into Quotation(packageWeight,senderAddress,receiverAddress,customerId,type,QuoteDate) values('"
 						+p.getPackageWeight()+"','"+p.getSenderAddress()+"','"+p.getReceiverAddress()+"','"+p.getCustomerId()+"','"+p.getType()+"','"+p.getAcceptDate()+"');");

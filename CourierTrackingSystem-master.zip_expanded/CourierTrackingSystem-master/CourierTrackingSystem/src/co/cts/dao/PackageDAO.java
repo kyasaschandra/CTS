@@ -3,6 +3,7 @@ package co.cts.dao;
 
 import com.cts.vo.Package;
 
+// Interface for methods implemented in Package DAO class
 public interface PackageDAO
 {
 

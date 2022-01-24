@@ -9,14 +9,14 @@ import com.cts.vo.Warehouse;
 public class WarehouseDAOImple implements WarehouseDAO {
 	
 	int result=0;
+	
+	// Method for validating Warehouse details if already inserted
 	@Override
 	public int warehouseValidation(Warehouse w)
-	{
-	
-		
-		
+	{		
 		try
 		{
+			// Creating database connection and executing the query
 			PreparedStatement pst=Db.getDb().prepareStatement("select * from warehouse");
 			ResultSet rs=pst.executeQuery();
 			while(rs.next())
@@ -36,12 +36,12 @@ public class WarehouseDAOImple implements WarehouseDAO {
 
 }
 	
+	// Method for inserting Warehouse details in database
 	@Override
 	public int warehouseInsertion(Warehouse w) {
-		
-		
 		try
 		{
+			// Creating database connection and executing the query
 			PreparedStatement pst=Db.getDb().prepareStatement("insert into warehouse(branchid,branchname,branchlocation,contactno) values('"+w.getBranchId()+"','"+w.getBranchName()+"','"+w.getBranchLocation()+"','"+w.getContactNo()+"');");
 			result=pst.executeUpdate();
 		}

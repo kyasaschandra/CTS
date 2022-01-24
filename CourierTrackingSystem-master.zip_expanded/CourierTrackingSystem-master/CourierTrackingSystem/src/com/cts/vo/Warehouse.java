@@ -11,6 +11,13 @@ public class Warehouse {
 	
 	private String contactNo;
 	
+	public Warehouse(String branchId, String branchName, String branchLocation, String contactNo) {
+		this.branchId=branchId;
+		this.branchName=branchName;
+		this.branchLocation=branchLocation;
+		this.contactNo=contactNo;
+	}
+	
 	
 	public String getBranchId() {
 		return branchId;

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 
 import com.cts.util.Db;
 
+// Method for validating the super user details for login
 public class SuperUserDAO {
 	
 	int result=0;

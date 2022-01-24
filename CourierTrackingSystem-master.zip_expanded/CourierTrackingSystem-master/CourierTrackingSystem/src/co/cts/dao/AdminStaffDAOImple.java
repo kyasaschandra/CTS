@@ -11,11 +11,12 @@ public class AdminStaffDAOImple implements AdminStaffDAO {
 	int result = 0;
 
 	
-
+	// Method for validating an Admin for login
 	@Override
 	public int adminValidation(Admin a) {
 
 		try {
+			// Creating Database connection and executing the query
 			PreparedStatement pst = Db.getDb().prepareStatement("select * from staff where loginType='A'");
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
@@ -39,10 +40,12 @@ public class AdminStaffDAOImple implements AdminStaffDAO {
 		return result;
 	}
 
+	// Method for Validating a staff for login
 	@Override
 	public int staffValidation(Admin a) {
 
 		try {
+			// Creating the Database connection and executing the query statement 
 			PreparedStatement pst = Db.getDb().prepareStatement("select * from staff where loginType='S'");
 			ResultSet res = pst.executeQuery();
 
@@ -72,9 +75,11 @@ public class AdminStaffDAOImple implements AdminStaffDAO {
 
 	}
 
+	// Method for inserting Admin and Staff details into Database
 	public int insertion(Admin a) {
 
 		try {
+			// Creating database connection and executing the query
 			PreparedStatement pst = Db.getDb().prepareStatement(
 					"insert into staff(firstName,lastName,gender,email,contactNumber,employeeId,password,salary,designation,correpondanceAddress,loginType,approved) values('"
 							+ a.getFirstName() + "','" + a.getLastName() + "','" + a.getGender() + "','" + a.getEmail()

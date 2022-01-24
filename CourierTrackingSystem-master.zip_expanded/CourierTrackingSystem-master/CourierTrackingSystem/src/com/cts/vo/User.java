@@ -57,6 +57,16 @@ public class User {
 	public User() {
 		super();
 	}
+	public User(String firstName, String lastName, String gender, String email, long contactNumber, long customerId, String password) {
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.gender = gender;
+		this.email=email;
+		this.contactNumber=contactNumber;
+		this.customerId=customerId;
+		this.password=password;
+		
+	}
 	
 	
 	
