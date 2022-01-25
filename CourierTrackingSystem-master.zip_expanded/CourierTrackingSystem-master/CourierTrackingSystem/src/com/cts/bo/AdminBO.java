@@ -19,12 +19,14 @@ import co.cts.dao.AdminStaffDAOImple;
 
 @WebServlet("/Admin")
 public class AdminBO extends HttpServlet {
+	
+	// Servlet code...
 	private static final long serialVersionUID = 1L;
     public AdminBO() {
         super();
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// Login Details of Admin are taken as input
 		try
 		{
 		String email=(String)(request.getParameter("email"));
@@ -41,6 +43,7 @@ public class AdminBO extends HttpServlet {
 		
 		int result=0;
 		
+		// Based on input type validation id done
 		if(loginType.equalsIgnoreCase("A")) {
 			result=ado.adminValidation(a);
 		}
@@ -48,16 +51,14 @@ public class AdminBO extends HttpServlet {
 		if(loginType.equalsIgnoreCase("S")) {
 			result=ado.staffValidation(a);
 		}
-
-		
-		
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
+		// Based on DAO result, Response is given
 		if(result==1)
 		{
-			
+			// Admin login approved
 			s.setAttribute("ref", email);
 			System.out.println(new Date(s.getCreationTime()));
 
@@ -67,6 +68,7 @@ public class AdminBO extends HttpServlet {
 		}
 		else if(result==2)
 		{
+			// Staff login approved
 			s.setAttribute("ref", email);
 			System.out.println(new Date(s.getCreationTime()));
 
@@ -75,7 +77,7 @@ public class AdminBO extends HttpServlet {
 		}
 		else if(result==11)
 		{
-
+			// Admin login rejected
 			s.setAttribute("ref", email);
 			System.out.println(new Date(s.getCreationTime()));
 
@@ -83,6 +85,7 @@ public class AdminBO extends HttpServlet {
 		}
 		else if(result==22)
 		{
+			// Staff login rejected
 			s.setAttribute("ref", email);
 			System.out.println(new Date(s.getCreationTime()));
 			
@@ -90,6 +93,7 @@ public class AdminBO extends HttpServlet {
 		}
 		else if(result==111)
 		{
+			// Admin login pending
 			s.setAttribute("ref", email);
 			System.out.println(new Date(s.getCreationTime()));
 
@@ -97,12 +101,14 @@ public class AdminBO extends HttpServlet {
 		}
 		else if(result==222)
 		{
+			//Staff login pending
 			s.setAttribute("ref", email);
 			System.out.println(new Date(s.getCreationTime()));
 
 			out.println("Your Staff request is pending for approval from Admin");
 		}
 		else {
+			// Wrong credentials
 			s.setAttribute("ref", email);
 			System.out.println(new Date(s.getCreationTime()));
 

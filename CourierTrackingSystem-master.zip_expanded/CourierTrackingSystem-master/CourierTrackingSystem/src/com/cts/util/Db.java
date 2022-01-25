@@ -10,6 +10,7 @@ public class Db {
 		
 	}
 	
+	// Database connection object is created and returned
 	public static Connection getDb()
 	{
 		Connection con=null;

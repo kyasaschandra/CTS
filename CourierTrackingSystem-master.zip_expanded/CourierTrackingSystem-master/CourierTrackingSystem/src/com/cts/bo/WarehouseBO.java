@@ -16,6 +16,7 @@ import co.cts.dao.WarehouseDAOImple;
 
 @WebServlet("/WarehouseBO")
 public class WarehouseBO extends HttpServlet {
+	// Servlet Code
 	private static final long serialVersionUID = 1L;
        
     public WarehouseBO() {

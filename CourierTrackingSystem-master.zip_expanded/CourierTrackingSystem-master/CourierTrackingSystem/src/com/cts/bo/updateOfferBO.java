@@ -18,6 +18,7 @@ import com.cts.util.Db;
  */
 @WebServlet("/updateOffer")
 public class updateOfferBO extends HttpServlet {
+	// Srevlet to collect data from website and update in database quotation table
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -64,6 +65,7 @@ public class updateOfferBO extends HttpServlet {
 			
 			RequestDispatcher rd=request.getRequestDispatcher("userOffer.jsp");
 				
+			// if any field is left blank, flag is assigned to 1
 				if(type.equals("") || type==null) {
 					out.println("Package type is required<br>");
 					flag=1;
@@ -87,6 +89,7 @@ public class updateOfferBO extends HttpServlet {
 			
 			int result=0;
 			
+			// inserts offer details given by admin in quotation table of database
 			PreparedStatement pst=Db.getDb().prepareStatement(
 					"update quotation set packageWeight='"+weight+"', offerDate='"+offerdate+"', distance='"+distance+"', cost='"+cost+"', type='"+type+"', expectedDeiveryDate='"+expdelivdate+"' "
 					+"where customerId='"+customerId+"' ;"

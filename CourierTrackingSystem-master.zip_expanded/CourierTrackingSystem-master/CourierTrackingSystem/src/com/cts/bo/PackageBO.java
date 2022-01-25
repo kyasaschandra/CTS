@@ -16,6 +16,7 @@ import co.cts.dao.PackageDAOImple;
 
 @WebServlet("/PackageInsertion")
 public class PackageBO extends HttpServlet {
+	// Servlet code
 	private static final long serialVersionUID = 1L;
     public PackageBO() {
         super();
@@ -25,6 +26,8 @@ public class PackageBO extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		response.setContentType("text/html");
 		out.print("<head> <title> </title> </head> <body>");
+		
+		// SQL for Taable Creation
 		
 //		CREATE TABLE package(consignmentId VARCHAR(10),
 //				acceptDate VARCHAR(50),packageWeight VARCHAR(50),
@@ -36,6 +39,7 @@ public class PackageBO extends HttpServlet {
 	
 		try
 		{
+			// Values are returned 
 			String consignmentId=request.getParameter("consignmentId");
 			String acceptDate=request.getParameter("acceptDate");
 			String packageWeight=request.getParameter("packageWeight");
@@ -53,6 +57,7 @@ public class PackageBO extends HttpServlet {
 //			String packageStatus=request.getParameter("packageStatus");
 //			
 			Package p=new Package();
+			// Values are set
 			p.setCosignmentId(consignmentId);
 			p.setAcceptDate(acceptDate);
 			p.setPackageWeight(packageWeight);

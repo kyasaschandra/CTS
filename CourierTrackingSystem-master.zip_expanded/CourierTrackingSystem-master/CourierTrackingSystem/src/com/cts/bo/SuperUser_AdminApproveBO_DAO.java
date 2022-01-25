@@ -23,17 +23,19 @@ public class SuperUser_AdminApproveBO_DAO extends HttpServlet {
 		super();
 	}
 
+	// Servlet gets data from DataBase and displays on webpage
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		// Creates a new webpage
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
 		out.println("<html><body>");
 		try {
+			// filters unapproved admins from database
 			PreparedStatement pst = Db.getDb().prepareStatement(
 					"select firstName,lastName,gender,email,designation,approved from staff where logintype='A' and approved='pending';");
 			ResultSet rs = pst.executeQuery();
 
-
+			// creates a table to display admin details for superUser
 			i=0;
 			out.println("<table border=1 width=50% height=50%>");
 			out.println(
@@ -67,6 +69,7 @@ public class SuperUser_AdminApproveBO_DAO extends HttpServlet {
 
 	}
 
+	// website sends data to servlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PreparedStatement prst1;
@@ -81,6 +84,7 @@ public class SuperUser_AdminApproveBO_DAO extends HttpServlet {
 				System.out.println(app[i]);
 
 				if (app[i].equals("approve")) {
+					// If superUser selects approve, in database for that admin it gets updated to approved
 					prst1 = Db.getDb().prepareStatement(
 							"update staff set approved='approved' where logintype='A' and firstname='" + firstName[i] + "'");
 
@@ -89,6 +93,7 @@ public class SuperUser_AdminApproveBO_DAO extends HttpServlet {
 				}
 
 				else if (app[i].equals("reject")) {
+					// If superUser selects reject, in database for that admin it gets updated to rejected and he can not login
 					prst1 = Db.getDb().prepareStatement(
 							"update staff set approved='rejected' where logintype='A' and firstname='" + firstName[i] + "'");
 

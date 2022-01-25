@@ -16,12 +16,14 @@ import co.cts.dao.SuperUserDAO;
 
 @WebServlet("/SULoginValidation")
 public class SuperUserLoginBO extends HttpServlet {
+	// Servlet code to validate superUser login credentials
 	private static final long serialVersionUID = 1L;
     public SuperUserLoginBO() {
         super();
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		// Website sends data to servlet
 		
 		try
 		{
@@ -31,10 +33,12 @@ public class SuperUserLoginBO extends HttpServlet {
 		HttpSession s=request.getSession(true);
 
 		SuperUserDAO suv=new SuperUserDAO();
+		// Function checks superUser credentials in database and returns 1 if matched correctly
 		int result=suv.suValidation(email, password);
 		
 		if(result==1)
 		{
+			// if credentials matched, it redirects to superUser Homepage
 			s.setAttribute("ref",email);
 			System.out.println(new Date(s.getCreationTime()));
 			System.out.println(new Date(s.getLastAccessedTime()));
@@ -43,6 +47,7 @@ public class SuperUserLoginBO extends HttpServlet {
 		}
 		else
 		{
+			// if credentials didnot match it gets redirected to main homepage
 			RequestDispatcher rd=request.getRequestDispatcher("index.html");
 			rd.include(request, response);
 			

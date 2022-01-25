@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 @WebServlet("/Logout")
 public class LogoutBO extends HttpServlet {
+	// Servlet Code
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
+			// logOut session
 		response.setContentType("text/html");
 		HttpSession s=request.getSession(false);
 		

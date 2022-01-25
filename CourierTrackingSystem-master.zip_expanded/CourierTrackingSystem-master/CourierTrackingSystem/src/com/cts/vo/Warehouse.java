@@ -18,6 +18,7 @@ public class Warehouse {
 		this.contactNo=contactNo;
 	}
 	
+	public Warehouse() {}
 	
 	public String getBranchId() {
 		return branchId;

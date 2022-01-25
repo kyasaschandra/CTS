@@ -15,6 +15,7 @@ import com.cts.vo.User;
 import co.cts.dao.UserDAOImple;
 @WebServlet("/UserCreation")
 public class UserBO extends HttpServlet {
+	// Servlet code
 	private static final long serialVersionUID = 1L;
     public UserBO() {
         super();
@@ -26,7 +27,7 @@ public class UserBO extends HttpServlet {
 		out.print("<head> <title> </title> </head> <body>");
 		try
 		{
-			
+			// values are returned
 			int result=0;
 			String firstName=request.getParameter("firstName");
 			String lastName=request.getParameter("lastName");
@@ -37,6 +38,7 @@ public class UserBO extends HttpServlet {
 			String password=request.getParameter("password");
 
 			User u=new User();
+			// values are set
 			u.setFirstName(firstName);
 			u.setLastName(lastName);
 			u.setGender(gender);
@@ -49,13 +51,15 @@ public class UserBO extends HttpServlet {
 			result=udo.insertion(u);
 			if(result==1)
 			{
-				
+				// if inserted
 				RequestDispatcher rd=request.getRequestDispatcher("UserRegistration.jsp");
 				out.print("User details inserted successfully");
 				rd.include(request,response);
 			}
 			else
-			{	out.print("Failed to add details");
+			{	
+				// if not inserted
+				out.print("Failed to add details");
 				RequestDispatcher rd=request.getRequestDispatcher("UserRegistration.jsp");
 				rd.forward(request, response);
 				

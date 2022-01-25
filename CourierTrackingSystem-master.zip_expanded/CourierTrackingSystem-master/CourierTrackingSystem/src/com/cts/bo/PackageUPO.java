@@ -15,6 +15,7 @@ import co.cts.dao.PackageDAOImple;
 
 @WebServlet("/PackageUpdation")
 public class PackageUPO extends HttpServlet {
+	// Servlet Code
 	private static final long serialVersionUID = 1L;
     public PackageUPO() {
         super();
@@ -25,6 +26,7 @@ public class PackageUPO extends HttpServlet {
 	{
 		try
 		{
+			// Values are returned
 		String currentLocation=request.getParameter("currentLocation");
 		String packageStatus=request.getParameter("packageStatus");
 		String employeeId=(request.getParameter("employeeId"));
@@ -32,6 +34,7 @@ public class PackageUPO extends HttpServlet {
 		String currentDate=request.getParameter("currentDate");
 		String type=request.getParameter("type");
 		Package p=new Package();
+		// Values are set
 		p.setCurrentLocation(currentLocation);
 		p.setPackageStatus(packageStatus);
 		p.setCosignmentId(cosignmentId);

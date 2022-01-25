@@ -16,6 +16,7 @@ import com.cts.util.Db;
 
 @WebServlet("/request")
 public class requestBO_DAO extends HttpServlet {
+	// Servlet Code
 	private static final long serialVersionUID = 1L;
 
 	public requestBO_DAO() {
@@ -27,6 +28,7 @@ public class requestBO_DAO extends HttpServlet {
 	int i = 0;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse res) throws ServletException, IOException {
+		// Admin request is Accepted or Rejected
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
 		out.println("<html><body>");
@@ -34,6 +36,8 @@ public class requestBO_DAO extends HttpServlet {
 			PreparedStatement pst = Db.getDb().prepareStatement(
 					"select firstName,lastName,gender,email,designation,approved from staff where logintype='S' and approved!='approved'");
 			ResultSet rs = pst.executeQuery();
+			
+			// SQL for Staff Table Creation
 
 			// CREATE TABLE staff(firstName VARCHAR(50), lastName VARCHAR(50),
 			// gender VARCHAR(50), email VARCHAR(50),contactNumber VARCHAR(50),
@@ -73,7 +77,7 @@ public class requestBO_DAO extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse res) throws ServletException, IOException {
-		
+		// Updating Staff request for registration
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
 		

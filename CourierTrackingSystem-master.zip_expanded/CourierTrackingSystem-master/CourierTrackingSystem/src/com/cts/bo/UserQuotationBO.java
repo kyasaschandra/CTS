@@ -21,6 +21,7 @@ import co.cts.dao.PackageDAOImple;
  */
 @WebServlet("/UserQuotationBO")
 public class UserQuotationBO extends HttpServlet {
+	// servlet code
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -45,6 +46,7 @@ public class UserQuotationBO extends HttpServlet {
 		// TODO Auto-generated method stub
 		try
 		{
+			// values are returned
 		String weight=(String)(request.getParameter("packageWeight"));
 		String senderAddress=request.getParameter("senderAddress");
 		String deliverAddress=(String)(request.getParameter("receiverAddress"));
@@ -55,6 +57,7 @@ public class UserQuotationBO extends HttpServlet {
 		HttpSession s=request.getSession(true);
 		
 		Package p=new Package();
+		// values are set
 		p.setPackageWeight(weight);
 		p.setSenderAddress(senderAddress);
 		p.setReceiverAddress(deliverAddress);
@@ -65,7 +68,7 @@ public class UserQuotationBO extends HttpServlet {
 		PackageDAOImple pdo=new PackageDAOImple();
 		int result=pdo.saveQuotation(p);
 		
-		
+		// based on DAO result, reponse is given
 		if(result==1)
 		{
 			s.setAttribute("ref",customerId);

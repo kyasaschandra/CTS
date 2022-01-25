@@ -57,12 +57,14 @@ public class UpdateUserOffer extends HttpServlet {
 		int result=0;
 
 		try {
+			// in website if user selects accepted, this code runs and updates in database , quotation tabole as accepted
 			if (update.contentEquals("accepted")) {
 				PreparedStatement pst = Db.getDb().prepareStatement(
 						"update Quotation set useracceptance='accepted' where customerId='" + customerId + "';");
 				result=pst.executeUpdate();
 				out.print("<h2>Successfully Accepted<h2>");
 			}
+			// in website if user selects rejected, this code runs and updates in database, quotation table as rejected
 			else if(update.contentEquals("rejected")) {
 				PreparedStatement pst = Db.getDb().prepareStatement(
 						"update Quotation set useracceptance='rejected' where customerId='" + customerId + "';");
@@ -77,6 +79,7 @@ public class UpdateUserOffer extends HttpServlet {
 		
 		
 		if(result==1) {
+			// displays the below message in new webpage if successfully inserted
 			out.print("<h2>Successfully Inserted<h2>");
 			rd.forward(request, response);
 			

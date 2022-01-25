@@ -16,10 +16,12 @@ import co.cts.dao.AdminStaffDAOImple;
 
 @WebServlet("/StaffRegistrationModule")
 public class StaffRegistrationBO extends HttpServlet {
+	// Servlet Code
 	private static final long serialVersionUID = 1L;
     public StaffRegistrationBO() {
         super();
     }
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out=response.getWriter();
@@ -28,6 +30,7 @@ public class StaffRegistrationBO extends HttpServlet {
 	
 		try
 		{
+			// Getting data from webpage
 			String firstName=request.getParameter("firstName");
 			String lastName=request.getParameter("lastName");
 			String gender=request.getParameter("gender");

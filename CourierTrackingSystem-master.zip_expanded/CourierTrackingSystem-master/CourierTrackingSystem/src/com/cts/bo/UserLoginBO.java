@@ -16,13 +16,14 @@ import co.cts.dao.UserDAOImple;
 
 @WebServlet("/UserLoginBOValidation")
 public class UserLoginBO extends HttpServlet {
+	// servlet code
 	private static final long serialVersionUID = 1L;
     public UserLoginBO() {
         super();
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
+		// Login details of user are taken as input
 		try
 		{
 		String email=(String)(request.getParameter("email"));
@@ -35,6 +36,7 @@ public class UserLoginBO extends HttpServlet {
 		UserDAOImple udo=new UserDAOImple();
 		int result=udo.validation(u);
 		
+		// reponse given based on DAO result
 		if(result==1)
 		{
 			s.setAttribute("ref",email);
